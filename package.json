@@ -1,0 +1,49 @@
+{
+  "name": "zelos-app-can",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Browser-based CAN log to .trz converter (proxies app.can.zeloscloud.io)",
+  "author": "Zelos",
+  "packageManager": "npm@10.8.2",
+  "engines": {
+    "node": "20.x",
+    "npm": "10.x"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src/",
+    "tsc": "tsc --noEmit",
+    "check": "npm run lint && npm run tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "package": "zelos extensions package ."
+  },
+  "dependencies": {
+    "@zeloscloud/app-extension-sdk": "^0.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^9.0.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "jsdom": "^25.0.1",
+    "prettier": "^3.0.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.2.2",
+    "typescript-eslint": "^8.0.0",
+    "vite": "^5.4.19",
+    "vitest": "^2.1.8"
+  }
+}
