@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Get version from tag
         id: version
@@ -53,7 +53,7 @@ jobs:
           echo "✓ Package created: $(ls $PACKAGE_FILE)"
 
       - name: Create GitHub release
-        uses: softprops/action-gh-release@v2.4.1
+        uses: softprops/action-gh-release@v3.0.0
         with:
           files: "*-${{ steps.version.outputs.VERSION }}.tar.gz"
           generate_release_notes: true
