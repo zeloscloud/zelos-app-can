@@ -1,0 +1,60 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get version from tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Verify version matches manifest
+        run: |
+          TAG_VERSION="${{ steps.version.outputs.VERSION }}"
+          EXTENSION_VERSION=$(awk -F'"' '/^version[[:space:]]*=/ {print $2; exit}' extension.toml)
+          if [ "$EXTENSION_VERSION" != "$TAG_VERSION" ]; then
+            echo "Error: extension.toml version ($EXTENSION_VERSION) does not match tag ($TAG_VERSION)"
+            exit 1
+          fi
+          echo "✓ extension.toml version matches: $EXTENSION_VERSION"
+
+      - name: Install Zelos CLI
+        run: |
+          curl -fsSL https://release.zeloscloud.io/cli/install.sh | bash
+          echo "$HOME/.zelos/bin" >> $GITHUB_PATH
+        env:
+          INSTALLER_NO_MODIFY_PATH: 1
+
+      - name: Package extension
+        run: zelos extensions package .
+
+      - name: Verify package was created
+        run: |
+          PACKAGE_FILE="*-${{ steps.version.outputs.VERSION }}.tar.gz"
+          if ! ls $PACKAGE_FILE 1> /dev/null 2>&1; then
+            echo "Error: Package file not found: $PACKAGE_FILE"
+            exit 1
+          fi
+          echo "✓ Package created: $(ls $PACKAGE_FILE)"
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2.4.1
+        with:
+          files: "*-${{ steps.version.outputs.VERSION }}.tar.gz"
+          generate_release_notes: true
+          fail_on_unmatched_files: true

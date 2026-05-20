@@ -1,0 +1,21 @@
+name = "CAN Converter"
+version = "0.1.0"
+description = "Convert .blf / .asc / .log / .csv / .trc CAN logs to .trz in the browser"
+author = "Zelos"
+repository = "https://github.com/zeloscloud/zelos-app-can"
+icon = "assets/icon.png"
+readme = "README.md"
+
+[zelos]
+version = ">=26.0.3"
+
+[host]
+type = "app"
+
+[host.app]
+kind = "web_app"
+source = "external"
+entry = "https://app.can.zeloscloud.io/"
+
+[package]
+paths = ["assets", "README.md"]
