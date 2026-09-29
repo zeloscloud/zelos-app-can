@@ -1,8 +1,10 @@
 name = "CAN Converter"
 version = "0.1.0"
-description = "Convert .blf / .asc / .log / .csv / .trc CAN logs to .trz in the browser"
+description = "Convert .blf / .asc / .log / .csv / .trc CAN logs to .trz traces in the browser. Requires a DBC file."
 author = "Zelos"
 repository = "https://github.com/zeloscloud/zelos-app-can"
+keywords = ["can", "can-bus", "dbc", "blf", "asc", "trc", "candump", "csv", "python-can", "trz", "converter", "automotive"]
+categories = ["Automotive", "Data Conversion"]
 icon = "assets/icon.png"
 readme = "README.md"
 
