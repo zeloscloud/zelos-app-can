@@ -1,3 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+
+# Node
 node_modules/
+
+# Build output and packages
 dist/
 *.tar.gz
+actions.json
+
+# Editors and OS
+.DS_Store
+.idea/
+*.swp
+
+# Local environment
+.env
+.envrc
+
+# Zelos
+config.json
