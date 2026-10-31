@@ -1,8 +1,13 @@
 {
   "recommendations": [
+    "charliermarsh.ruff",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-python.debugpy",
     "esbenp.prettier-vscode",
     "dbaeumer.vscode-eslint",
+    "bradlc.vscode-tailwindcss",
     "tamasfe.even-better-toml",
-    "bradlc.vscode-tailwindcss"
+    "redhat.vscode-yaml"
   ]
 }

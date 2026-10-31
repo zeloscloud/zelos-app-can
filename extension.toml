@@ -1,23 +1,19 @@
 name = "CAN Converter"
 version = "0.1.0"
-description = "Convert .blf / .asc / .log / .csv / .trc CAN logs to .trz traces in the browser. Requires a DBC file."
+description = "Convert .blf, .asc, .trc, .csv and candump .log CAN logs to .trz traces with a DBC file, in a Zelos tab."
 author = "Zelos"
 repository = "https://github.com/zeloscloud/zelos-app-can"
-keywords = ["can", "can-bus", "dbc", "blf", "asc", "trc", "candump", "csv", "python-can", "trz", "converter", "automotive"]
+# The marketplace search and Zelos AI find an extension by these words, its name and its description.
+keywords = ["can", "can-bus", "dbc", "blf", "asc", "trc", "candump", "csv", "python-can", "trz", "converter", "automotive", "vector blf", "log converter", "can log", "dbc converter", "blf to trz", "asc to trz"]
 categories = ["Automotive", "Data Conversion"]
 icon = "assets/icon.png"
 readme = "README.md"
 
 [zelos]
-version = ">=26.0.3"
+version = ">=26.0.10"
 
-[host]
-type = "app"
-
-[host.app]
-kind = "web_app"
-source = "external"
-entry = "https://app.can.zeloscloud.io/"
+[app]
+tab = { entry = "https://app.can.zeloscloud.io/", source = "external" }
 
 [package]
 paths = ["assets", "README.md"]
